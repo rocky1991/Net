@@ -1,10 +1,10 @@
 
 sudo echo "" >iperf3_results.txt
 
-sudo tc qdisc del dev eno1 root
+sudo tc qdisc del dev wlp2s0 root
 echo "######## No bandwidth setting ####" >> iperf3_results.txt
 iperf3 -c 18.236.164.60 >> iperf3_results.txt
-sudo tc qdisc add dev eno1 root tbf rate \
+sudo tc qdisc add dev wlp2s0 root tbf rate \
 1mbit burst 32kbit limit 10000
 
 bandwidth_params=(1 2 5 10 20 50 100 120 150 180 200 220 240 260 280)
@@ -14,9 +14,9 @@ index=0
 while [ $index -le $len ]
 do
 	echo "######## Set bandwidth to be ${bandwidth_params[$index]}M ####" >> iperf3_results.txt
-	sudo tc qdisc change dev eno1 root tbf rate \
+	sudo tc qdisc change dev wlp2s0 root tbf rate \
 	${bandwidth_params[$index]}mbit burst 32kbit limit 10000
-	sudo tc qdisc show dev eno1
+	sudo tc qdisc show dev wlp2s0
 	iperf3 -c 18.236.164.60 >> iperf3_results.txt
 	index=$(($index+1))
 done
