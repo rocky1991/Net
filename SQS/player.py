@@ -76,17 +76,17 @@ def player(queue, player):
     print("Thanks for playing, {}...👋".format(player))
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--player", help="player name", default="1")
-    parser.add_argument("-q", "--queue", help="queue url",
-                        default="https://sqs.us-east-1.amazonaws.com/519894690248/grenade-queue")
-    args = parser.parse_args()
+# def main():
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("-p", "--player", help="player name", default="1")
+#     parser.add_argument("-q", "--queue", help="queue url",
+#                         default="https://sqs.us-east-1.amazonaws.com/519894690248/grenade-queue")
+#     args = parser.parse_args()
 
-    sqs = boto3.resource('sqs')
-    queue = sqs.Queue(args.queue)
-    player(queue, args.player)
+#     sqs = boto3.resource('sqs')
+#     queue = sqs.Queue(args.queue)
+#     player(queue, args.player)
 
 
-if __name__=="__main__":
-    main()
+# if __name__=="__main__":
+#     main()
