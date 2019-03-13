@@ -1,4 +1,0 @@
-[2019-03-11 10:20:17,264] INFO Accepted socket connection from /127.0.0.1:54470 (org.apache.zookeeper.server.NIOServerCnxnFactory)
-[2019-03-11 10:20:17,266] INFO Accepted socket connection from /127.0.0.1:54472 (org.apache.zookeeper.server.NIOServerCnxnFactory)
-[2019-03-11 10:20:17,267] INFO Client attempting to establish new session at /127.0.0.1:54470 (org.apache.zookeeper.server.ZooKeeperServer)
-[2019-03-11 10:20:17,272] INFO Client attempting to establish new session at /127.0.0.1:54472 (org.apache.zookeeper.server.ZooKeeperServer)
