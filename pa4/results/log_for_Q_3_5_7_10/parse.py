@@ -33,7 +33,7 @@ def local_produce_parse():
 	
 		
 	with open('local_produce_results.csv','a') as file:
-		file.write('message size, message key, sending time\n')
+		file.write('message size, message key, sending time(local)\n')
 		for event in event_log:
 			if len(event)>1:
 				file.write(event[0]+','+event[1]+','+event[2]+'\n')
@@ -122,15 +122,34 @@ def remote_consume_parse_phase2():
 	with open('remote_consume_results_phase2.csv','w') as file:
 		file.write('')
 	with open('remote_consume_results_phase2.csv','a') as file:
-		file.write('message size, message key, receiving time, forwarding time\n')
+		file.write('message size, message key, receiving time(remote), forwarding time(remote)\n')
 		for event in event_log:
-			print(event)
+			# print(event)
 			file.write(event[0]+','+event[1]+','+event[2]+','+event[3]+'\n')
 def local_consume_parse():
 	event_log = []
-	
+	with open ('local_consume.log','r') as file:
+		lines = file.readlines()
+		for line in lines:
+			if line.split(' ')[0] == 'Receive':
+				filter1 = line.split('(')[1].split(')')
+				filter2 = filter1[0].split('=')
+				msg_key = filter2[1].split(' ')[0].strip().split("'")[1]
+				msg_size = filter2[-1].strip()
+				time_stamp = line.split(':')[3].strip()
+				event_log.append([msg_size,msg_key,time_stamp])
+	with open('local_consume_results.csv','w') as file:
+		file.write('')
+	with open('local_consume_results.csv','a') as file:
+		file.write('message size, message key, receiving time(local)\n')
+		for event in event_log:
+			# print(event)
+			file.write(event[0]+','+event[1]+','+event[2]+'\n')
+
 def main():
 	local_produce_parse()
 	remote_consume_parse_phase1()
 	remote_consume_parse_phase2()
 	local_consume_parse()
+if __name__=='__main__':
+	main()
