@@ -1,0 +1,7 @@
+INFO:root:Start Receiving Message >>>>>>>>>>
+INFO:root:Error occured: Broker: No more messages
+INFO:root:Error occured: Broker: No more messages
+INFO:root:Receive message: (key=b'1554172641.168308' msg size=32) from topic: topic1 at time: 1554172641.215841
+INFO:root:produce message:(key=b'1554172641.168308' msg size=32) to topic: topic2 at time: 1554172643.26851
+INFO:root:Receive message: (key=b'1554172641.200421' msg size=32) from topic: topic1 at time: 1554172643.2687101
+INFO:root:produce message:(key=b'1554172641.200421' msg size=32) to topic: topic2 at time: 1554172643.3006237
