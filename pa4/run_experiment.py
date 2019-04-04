@@ -7,7 +7,7 @@ import subprocess
 
 def main():
 	print("Running experiment >>>>>>>>>>>>>>>>>>")
-	print("Setting up EC2 instances")
+	# print("Setting up EC2 instances")
 	setup_instance = input("Setting up instance? y/n > ")
 	if(setup_instance=='y'):
 		instance_setup()
