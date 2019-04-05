@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install MongoDB
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
 
@@ -9,13 +11,10 @@ sudo apt-get install -y mongodb-org
 
 # start MongoDB
 sudo service mongod start
-sudo service mongod stop
-sudo service mongod restart
-mongo
+# sudo service mongod stop
+# sudo service mongod restart
+# mongo
 
 # install pymongo
 sudo apt install python3-pip
 python3 -m pip install pymongo
-
-# check port mongodb is running
-sudo lsof -iTCP -sTCP:LISTEN | grep mongo
