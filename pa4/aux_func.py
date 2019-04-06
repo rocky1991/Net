@@ -18,22 +18,16 @@ def append_to_file(filename,content):
 		file.write(content+'\n')
 		
 def csc_instruction(question_num):
-	
-	input("Please log in consumer(client) instance and start consume_msg.py,\n\
-	run 'python3 consume_msg.py topic1 your_log_name.log True topic2'\n\
-	Press Enter to continue")
-	input("Please start consume_msg at local machine, consume topic2\n\
-	run 'python3 consume_msg.py topic2 your_log_name.log False None'\
-	Press Enter to continue")
+	input("Please log in consumer(client) instance and start consume_msg.py,\nRun 'python3 consume_msg.py topic1 your_log_name.log True topic2'\nPress Enter to continue")
+	input("Please start consume_msg at local machine, consume topic2\nRun 'python3 consume_msg.py topic2 your_log_name.log False None'\nPress Enter to continue")
+
 def scc_instruction(question_num):
 	# logging.basicConfig(filename='q'+question_num+'.log',filemode='w')
 	# logging.info("Start running experiment for question {} >>>>>> ".format(question_num))
 	# logging.basicConfig(filemode='a')
 	# Need to set network setting
-	input("Please make sure kafka instance and all required non-kafka instances are set up\n\
-	Press Enter to continue")
-	input("Please log in each consumer(client) instance and start consume_msg.py,\n\
-	run 'python3 consume_msg.py topic1 your_log_name.log False None'\n\
+	input("Please make sure kafka instance and all required remote(client) instances are set up\nPress Enter to continue")
+	input("Please log in each consumer(client) instance and start consume_msg.py,\nRun 'python3 consume_msg.py topic1 your_log_name.log False None'\n\
 	Press Enter to continue")
 
 # set up all EC2 instances
@@ -68,9 +62,9 @@ def print_instance_list(instance_list):
 		print("Instance type is: {0:7}, ip address is {1}".format(instance.type,instance.ip))
 
 def pre_experiment_check():
-	input("Is the network performance measured as specified? press Enter to continue")
-	input("Is the server.config file modified(add advertised.listeners), press Enter to continue")
-	input("Is kafka and zookeeper server started? press Enter to continue")
+	input("Is the network performance measured as specified? \nPress Enter to continue")
+	input("Is the server.config file modified(add advertised.listeners)\nPress Enter to continue")
+	input("Is kafka and zookeeper server started?\nPress Enter to continue")
 
 	# net_setting_check = input("Is the network performance measured as specified? y/n >")
 	# kafka_setup_check = input("Is kafka and zookeeper server started? y/n >")

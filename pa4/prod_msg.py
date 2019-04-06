@@ -1,6 +1,6 @@
-from confluent_kafka import Producer
+
 import logging
-import time
+
 from aux_func import *
 # p = Producer({'bootstrap.servers': 'localhost:9092'})
 # p.produce('mytopic', key='hello', value='world1')
@@ -13,13 +13,7 @@ from aux_func import *
 
 # p.flush(30)
 
-def write_to_file(filename,content):
-    with open(filename,'w') as file:
-        file.write(content+'\n')
 
-def append_to_file(filename,content):
-    with open(filename,'a') as file:
-        file.write(content+'\n')
 def acked(err, msg):
     if err is not None:
         print("Failed to deliver message: {0}: {1}"

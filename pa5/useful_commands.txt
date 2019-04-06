@@ -14,4 +14,12 @@ sudo service mongod restart
 mongo
 
 # install pymongo
+<<<<<<< HEAD
 pip3 install pymongo
+=======
+sudo apt install python3-pip
+python3 -m pip install pymongo
+
+# check port mongodb is running
+sudo lsof -iTCP -sTCP:LISTEN | grep mongo
+>>>>>>> a2a77a00c32e9871336561f5899746f4e61d7325
