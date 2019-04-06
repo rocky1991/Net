@@ -10,5 +10,6 @@ sudo timedatectl set-ntp no
 sudo apt install ntp
 sudo service ntp restart
 
+python3 modify_server_config.py ./kafka2.12-2.20/config/server-properties
 # sudo apt update
 # echo update

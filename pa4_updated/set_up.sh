@@ -38,6 +38,8 @@ if [ $type = "Kafka" ]; then
 	scp -i .aws/credential/key1.pem kafka_setup.sh $IP:
 	echo "Running remote set up script"
 	ssh -i .aws/credential/key1.pem $IP "bash kafka_setup.sh"
+	echo "Sending server_config modifying script"
+	scp -i .aws/credential/key1.pem modify_server_config.py
 
 fi
 
