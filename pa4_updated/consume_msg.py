@@ -34,7 +34,8 @@ c.subscribe([topic])
 
 # write_to_file(log_name,'Start Receiving Message >>>>>>')
 write_to_file(log_name,'')
-p = Producer({'bootstrap.servers': kafka_ip+':9092'})
+p = Producer({'bootstrap.servers':kafka_ip+':9092',
+                  'message.max.bytes':'1100000'})
 
 try:
     while True:
