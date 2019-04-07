@@ -1,16 +1,20 @@
 from aux_func import *
+
+if(input("Setting up instance? y/n >") == 'y'):
+	instance_setup()
+
 from confluent_kafka import Producer
 import time
 
+
 def main():
 	print("Running experiment >>>>>")
-	if(input("Setting up instance? y/n" > ) == 'y'):
-		instance_setup()
+
 
 	pre_experiment_check()
 
 	kafka_ip = get_kafka_ip()
-	p = Producer({'bootstrap.servers':'localhost:9092',
+	p = Producer({'bootstrap.servers':kafka_ip+':9092',
 				  'message.max.bytes':'1100000'})
 
 	write_to_file('local_produce.log','')
@@ -27,12 +31,12 @@ def main():
 			
 			for msg in msg_list:
 				for i in range(50):
-					ts = str(time.time())
-					print("current message id is {} size is {}".format(ts,len(msg)))
-					p.produce('topic1',key=ts,value=msg)
+					key = str(time.time())
+					print("current message id is {} size is {}".format(key,len(msg)))
+					p.produce('topic1',key=key,value=msg)
 					p.flush()
 					ts = str(time.time())
-					append_to_file(logname,"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),'topic1',ts))
+					append_to_file('local_produce.log',"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),'topic1',ts))
 		elif(q_num == '4'):
 			pass
 		elif(q_num == '5'):
@@ -49,5 +53,5 @@ def main():
 			pass
 
    
-if __name__=='__main__':
-	main()
+
+main()

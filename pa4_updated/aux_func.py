@@ -1,3 +1,5 @@
+import subprocess
+
 def write_to_file(filename,content):
     with open(filename,'w') as file:
         file.write(content+'\n')
@@ -7,7 +9,7 @@ def append_to_file(filename,content):
         file.write(content+'\n')
 
 class EC2_instance():
-	def __init__(self,type='client',ip=''):
+	def __init__(self,type='',ip=''):
 		self.type = type
 		self.ip = ip
 
@@ -25,7 +27,7 @@ def get_kafka_ip():
 	with open('./remote_ips.txt','r') as file:
 		lines = file.readlines()
 	for line in lines:
-		if(line.split(',')[0].strip() == 'kafka'):
+		if(line.split(',')[0].strip() == 'Kafka'):
 			return line.split(',')[1].split('@')[1].strip()
 
 def pre_experiment_check():

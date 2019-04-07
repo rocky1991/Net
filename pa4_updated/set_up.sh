@@ -13,7 +13,6 @@ while [ "$1" != "" ]; do
 done
 
 if [ $type = "Initiator" ]; then
-	echo "Sending and extracting kafka zip"
 	sudo apt update
 	echo "installing pip3"
 	sudo apt -y install python3-pip
@@ -36,15 +35,16 @@ if [ $type = "Kafka" ]; then
 	ssh -i key1.pem $IP "tar -xzvf kafka_2.12-2.2.0.tgz"
 	echo "Sending remote setup script"  
 	scp -i key1.pem kafka_setup.sh $IP:
-	echo "Running remote set up script"
-	ssh -i key1.pem $IP "bash kafka_setup.sh"
 	echo "Sending server_config modifying script"
-	scp -i key1.pem modify_server_config.py
+	scp -i key1.pem modify_server_config.py $IP:
+	echo "Running remote set up script"
+	ssh -i key1.pem $IP bash kafka_setup.sh ${IP##*@}
+	
 
 fi
 
 if [ $type = "Responder" ]; then
-	echo "Send prood_msg.py and consume_msg.py remote_ips.txt aux_func.py"
+	echo "Send consume_msg.py remote_ips.txt aux_func.py"
 	scp -i key1.pem consume_msg.py remote_ips.txt aux_func.py $IP:
 	echo "Sending remote setup script"  
 	scp -i key1.pem responder_setup.sh $IP:

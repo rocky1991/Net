@@ -8,7 +8,7 @@ replacement_string = replacement_string_1+"\nmessage.max.bytes = 1100000"
 
 with open(file_path, 'U') as file:
 	line = file.read()
-	print(line)
+	# print(line)
 	if  old_string in line:
 		line=line.replace(old_string,replacement_string)
 

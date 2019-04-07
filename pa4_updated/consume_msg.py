@@ -1,7 +1,6 @@
 from confluent_kafka import Consumer, KafkaError
 import logging
 import time
-from prod_msg import *
 from aux_func import *
 from confluent_kafka import Producer, Consumer, KafkaError
 import sys
@@ -22,7 +21,7 @@ def append_to_file(filename,content):
 
 settings = {
     'bootstrap.servers': kafka_ip+':9092',
-    'group.id': group_id
+    'group.id': group_id,
     'client.id': 'client-1',
     'enable.auto.commit': True,
     'session.timeout.ms': 6000,
@@ -48,10 +47,10 @@ try:
             append_to_file(log_name,"Receive message: (key={} msg size={}) from topic: {} at time: {}".format(msg.key(),len(msg.value()),topic,consume_time))
             if(message_forwarding == 'True'):
                 # produce_msg(p,forwarding_topic,msg.key(),msg.value(),log_name)
-                p.produce(firwarding_topic,key=ts,value=msg)
+                p.produce(forwarding_topic,key=msg.key(),value=msg.value())
                 p.flush()
                 ts = str(time.time())
-                append_to_file(logname,"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),forwarding_topic,ts))
+                append_to_file(log_name,"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(msg.key(),len(msg),forwarding_topic,ts))
         else:
             append_to_file(log_name,'Error occured: {0}'.format(msg.error().str()))
             print("Consumption error!!")
