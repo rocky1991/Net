@@ -43,21 +43,21 @@ def main():
 
 			nodes_setting = [c for c in range(2,6)]
 			msg_list = ['a'*32]*50
-			for nodes in nodes_setting:
-				for i,instance in enumerate(get_ip()):
-					if(i>nodes+2):
-						break
+			for i,instance in enumerate(get_ip()):
+					
 					subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m','0.0000000001'])
+			for nodes in nodes_setting:
+				
 				print("Number of responder nodes: {}".format(nodes))
 				append_to_file('local_produce.log','Num of nodes:{}'.format(nodes))
-				input("Please start consume_msg at consumers(responders), consume topic2\nRun 'python3 consume_msg.py topic1 your_log_name.log False None group id'\nPress Enter to continue")
+				input("Please start consume_msg at consumers(responders), consume topic\nRun 'python3 consume_msg.py topic your_log_name.log False None group id'\nPress Enter to continue")
 				for msg in msg_list:
 					key = str(time.time())
 					print("current message id is {} size is {}".format(key,len(msg)))
-					p.produce('topic1',key=key,value=msg)
+					p.produce('topic'+str(nodes),key=key,value=msg)
 					p.flush()
 					ts = str(time.time())
-					append_to_file('local_produce.log',"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),'topic1',ts))
+					append_to_file('local_produce.log',"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),'topic'+str(nodes),ts))
 			# input("Please make sure kafka instance and all required responder(clients) instances are set up\nPress Enter to continue")
 			# input("Please log in each responder(client) instance and start consume_msg.py,\nRun 'python3 consume_msg.py topic1 your_log_name.log False None'\n\
 			# Press Enter to continue")
@@ -86,7 +86,7 @@ def main():
 					ts = str(time.time())
 					append_to_file('local_produce.log',"Produce message:(key={} msg_size={}) to topic: {} at time: {}".format(key,len(msg),'topic1',ts))
 		elif(q_num == '6'):
-			print("Number of responder nodes: {}".format(nodes))
+			print("Number of responder nodes: {}".format(str(3)))
 			append_to_file('local_produce.log','Num of nodes:{}'.format(str(3)))
 			input("Please start consume_msg at consumers(responders), consume topic1\nRun 'python3 consume_msg.py topic1 your_log_name.log False None group id'\nPress Enter to continue")
 			msg_list = ['a'*32]*50
@@ -98,7 +98,7 @@ def main():
 				append_to_file('local_produce.log','loss setting:{}'.format(loss_setting))
 				print("Adjusting network setting")
 				for i,instance in enumerate(get_ip()):
-					if(i>5):
+					if(i>4):
 						break
 					subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m',str(loss_setting+0.00000000001)])
 				for msg in msg_list:
