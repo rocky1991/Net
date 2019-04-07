@@ -42,7 +42,7 @@ bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic test
 
 bin/kafka-consumer-groups.sh  --list --bootstrap-server localhost:9092
 
-bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+kafka_2.12-2.2.0/bin/kafka-console-producer.sh --broker-list 35.165.72.110:9092 --topic topic1
 bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
 
 bin/kafka-console-producer.sh --broker-list localhost:9093 --topic test

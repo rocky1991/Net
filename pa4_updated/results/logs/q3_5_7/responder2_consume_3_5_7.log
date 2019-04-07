@@ -1,16 +1,3 @@
-
-Receive message: (key=b'1554662874.2576153' msg size=1048576) from topic: topic2 at time: 1554663622.2189977
-Receive message: (key=b'1554662875.6620536' msg size=1048576) from topic: topic2 at time: 1554663623.4763691
-Receive message: (key=b'1554662877.0495002' msg size=1048576) from topic: topic2 at time: 1554663625.611424
-Receive message: (key=b'1554662878.4948967' msg size=1048576) from topic: topic2 at time: 1554663628.2838001
-Receive message: (key=b'1554662879.7653074' msg size=1048576) from topic: topic2 at time: 1554663629.943435
-Receive message: (key=b'1554662896.558097' msg size=1048576) from topic: topic2 at time: 1554663632.0712776
-Receive message: (key=b'1554662897.5019102' msg size=1048576) from topic: topic2 at time: 1554663634.52228
-Receive message: (key=b'1554662904.039755' msg size=1048576) from topic: topic2 at time: 1554663637.0531192
-Receive message: (key=b'1554662912.1360068' msg size=1048576) from topic: topic2 at time: 1554663638.790286
-Receive message: (key=b'1554662921.1300962' msg size=1048576) from topic: topic2 at time: 1554663641.6561048
-Receive message: (key=b'1554662922.073773' msg size=1048576) from topic: topic2 at time: 1554663643.4364438
-Receive message: (key=b'1554662923.896853' msg size=1048576) from topic: topic2 at time: 1554663645.5695589
 Receive message: (key=b'1554663703.0179796' msg size=1) from topic: topic2 at time: 1554663706.6587865
 Receive message: (key=b'1554663704.0143166' msg size=1) from topic: topic2 at time: 1554663706.6590462
 Receive message: (key=b'1554663704.2571888' msg size=1) from topic: topic2 at time: 1554663706.659174

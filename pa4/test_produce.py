@@ -5,6 +5,6 @@ def acked(err, msg):
               .format(msg.value(), err.str()))
     else:
         print("Message produced: {0}".format(msg.value()))
-p = Producer({'bootstrap.servers':'54.201.231.207:9092'})
-p.produce("mytopic",value="hello",callback=acked)
+p = Producer({'bootstrap.servers':'35.165.72.110:9092'})
+p.produce("topic1",value="hello",callback=acked)
 p.flush()
