@@ -43,3 +43,7 @@ python3 consume_msg.py topic1 responder1_consume.log True topic2 group1
 python3 consume_msg.py topic2 responder2_consume.log False None group2
 scp -i key1.pem key1.pem  ubuntu@34.219.132.200:
 scp -i key1.pem kafka_2.12-2.2.0.tgz ubuntu@34.219.132.200:
+
+scp -i key1.pem ubuntu@34.219.132.200:local_pduce.log .
+scp -i key1.pem ubuntu@34.222.145.195:responder1_consume.log .
+scp -i key1.pem ubuntu@34.222.153.91:responder2_consume.log .
