@@ -32,23 +32,23 @@ fi
 
 if [ $type = "Kafka" ]; then
 	echo "Sending and extracting kafka zip"
-	scp -i .aws/credential/key1.pem kafka_2.12-2.2.0.tgz $IP:
-	ssh -i .aws/credential/key1.pem $IP "tar -xzvf kafka_2.12-2.2.0.tgz"
+	scp -i key1.pem kafka_2.12-2.2.0.tgz $IP:
+	ssh -i key1.pem $IP "tar -xzvf kafka_2.12-2.2.0.tgz"
 	echo "Sending remote setup script"  
-	scp -i .aws/credential/key1.pem kafka_setup.sh $IP:
+	scp -i key1.pem kafka_setup.sh $IP:
 	echo "Running remote set up script"
-	ssh -i .aws/credential/key1.pem $IP "bash kafka_setup.sh"
+	ssh -i key1.pem $IP "bash kafka_setup.sh"
 	echo "Sending server_config modifying script"
-	scp -i .aws/credential/key1.pem modify_server_config.py
+	scp -i key1.pem modify_server_config.py
 
 fi
 
 if [ $type = "Responder" ]; then
 	echo "Send prood_msg.py and consume_msg.py remote_ips.txt aux_func.py"
-	scp -i .aws/credential/key1.pem consume_msg.py remote_ips.txt aux_func.py $IP:
+	scp -i key1.pem consume_msg.py remote_ips.txt aux_func.py $IP:
 	echo "Sending remote setup script"  
-	scp -i .aws/credential/key1.pem responder_setup.sh $IP:
+	scp -i key1.pem responder_setup.sh $IP:
 	echo "Running remote responder set up script"
-	ssh -i .aws/credential/key1.pem $IP "bash responder_setup.sh"
+	ssh -i key1.pem $IP "bash responder_setup.sh"
 fi
 

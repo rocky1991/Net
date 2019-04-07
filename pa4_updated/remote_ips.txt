@@ -1,3 +1,4 @@
-Kafka, ubuntu@
-Initiator,ubuntu@
-Responder
+Kafka, ubuntu@54.68.204.212
+Initiator,ubuntu@34.219.132.200
+Responder,ubuntu@34.222.145.195
+Responder,ubuntu@34.222.153.91
