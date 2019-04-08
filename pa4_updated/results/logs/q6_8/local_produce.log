@@ -1,5 +1,3 @@
-
-Num of nodes:3
 loss setting:0.0
 Produce message:(key=1554671250.137036 msg_size=32) to topic: topic1 at time: 1554671250.4801886
 Produce message:(key=1554671250.48039 msg_size=32) to topic: topic1 at time: 1554671250.7251308
