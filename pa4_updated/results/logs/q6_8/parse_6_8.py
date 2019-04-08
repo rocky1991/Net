@@ -1,16 +1,38 @@
 
-# with open('local_produce.log', 'U') as file:
-# 	l = file.read()
-# 	# print(line)
-# 	while 'Produce message:(key=' in l:
-# 		l=l.replace('Produce message:(key=','')
-# 	while ') to topic: topic1 at time:' in l:
-# 		l=l.replace(') to topic: topic1 at time:',',')
-# 	while ' msg_size=' in l:
-# 		l=l.replace(' msg_size=',',')
+with open('local_produce.log', 'U') as file:
+	l = file.read()
+	# print(line)
+	while 'Produce message:(key=' in l:
+		l=l.replace('Produce message:(key=','')
+	while ') to topic: topic1 at time:' in l:
+		l=l.replace(') to topic: topic1 at time:',',')
+	while ' msg_size=' in l:
+		l=l.replace(' msg_size=',',')
 
-# with open('test1.csv','w') as file:
-# 	file.write(l)
+with open('test.csv','w') as file:
+	file.write(l)
+
+with open('responder1_6_8.log','U') as file:
+	line = file.read()
+	while "Receive message: (key=b'" in line:
+		line = line.replace("Receive message: (key=b'",'')
+	while "' msg size=" in line:
+		line = line.replace("' msg size=",',')
+	while ") from topic: topic1 at time:" in line:
+		line = line.replace(") from topic: topic1 at time:",',')
+with open('test1.csv','w') as file:
+	file.write(line)
+
+with open('responder2_6_8.log','U') as file:
+	line = file.read()
+	while "Receive message: (key=b'" in line:
+		line = line.replace("Receive message: (key=b'",'')
+	while "' msg size=" in line:
+		line = line.replace("' msg size=",',')
+	while ") from topic: topic1 at time:" in line:
+		line = line.replace(") from topic: topic1 at time:",',')
+with open('test2.csv','w') as file:
+	file.write(line)
 
 with open('responder3_6_8.log','U') as file:
 	line = file.read()
@@ -20,8 +42,9 @@ with open('responder3_6_8.log','U') as file:
 		line = line.replace("' msg size=",',')
 	while ") from topic: topic1 at time:" in line:
 		line = line.replace(") from topic: topic1 at time:",',')
-with open('test4.csv','w') as file:
+with open('test3.csv','w') as file:
 	file.write(line)
+
 
 # new_lines = []
 # with open('test1.csv','r') as file:
