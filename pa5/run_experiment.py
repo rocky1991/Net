@@ -29,10 +29,10 @@ s
 			counter = 0
 			for msg in msg_list:
 				for i in range(20):
-					print("current message id is {} size is {}".format(key,len(msg)))
+					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q3_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(key,len(msg),ts))
+					append_to_file('q3_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 			print("Deleting all documents")
 			client.pa5.messages1.delete_many({})
@@ -53,10 +53,10 @@ s
 				append_to_file('q4_initiator.log','Num of nodes:{}'.format(nodes))
 				input('Please log in each responder and start pulling messages\n Run "python3 pull_msg.py q4_responder_num.log False None"')
 				for msg in msg_list:
-					print("current message id is {} size is {}".format(key,len(msg)))
+					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q4_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(key,len(msg),ts))
+					append_to_file('q4_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 			print("Deleting all documents")
 			client.pa5.messages1.delete_many({})
@@ -78,10 +78,10 @@ s
 						break
 					subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m',str(loss_setting+0.00000000001)])
 				for msg in msg_list:
-					print("current message id is {} size is {}".format(key,len(msg)))
+					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q5_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(key,len(msg),ts))
+					append_to_file('q5_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 			print("Deleting all documents")
 			client.pa5.messages1.delete_many({})
@@ -104,10 +104,10 @@ s
 					subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m',str(loss_setting+0.00000000001)])
 				for msg in msg_list:
 					
-					print("current message id is {} size is {}".format(key,len(msg)))
+					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q5_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(key,len(msg),ts))
+					append_to_file('q5_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 			print("Deleting all documents")
 			client.pa5.messages1.delete_many({})
@@ -135,10 +135,10 @@ s
 				append_to_file('q10_initiator.log','delay setting:{}'.format(delay))
 				for msg in msg_list:
 
-					print("current message id is {} size is {}".format(key,len(msg)))
+					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q10_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(key,len(msg),ts))
+					append_to_file('q10_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 					time.sleep(delay)
 			print("Deleting all documents")
