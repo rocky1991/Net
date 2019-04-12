@@ -57,9 +57,9 @@ sudo service mongodb status
 Step 5: Start mongo console.
 mongo 
 
-############ for debug #############
 
 
+############ for testing message pulling #############
  from pymongo import MongoClient
 >>> client = MongoClient('ip-172-31-25-62',27017)
 >>> db.client.test1
@@ -81,3 +81,34 @@ SyntaxError: invalid syntax
 >>> db.mytest.insert_one({'x':14})
 <pymongo.results.InsertOneResult object at 0x7fa6440d9348>
 >>> db.mytest.insert_one({'counter':5,'flag':'syn'})
+
+db = client.test1
+post = db.mytest.find_one({'counter':5,'flag':'syn'})
+print(str(post['counter']) + post['flag'])
+print(db.mytest.find_one({'x':14})['x'])
+
+
+
+########3 increase base latency to 200ms on the eth0 interface
+
+sudo tc qdisc add dev eth0 root netem delay 200ms
+
+####### see the current rule
+
+sudo tc qdisc show dev eth0
+
+#######  delete the current rule
+
+sudo tc qdisc del dev eth0 root
+
+########## introduce packet loss
+
+sudo tc qdisc add dev eth0 root netem loss 10%
+
+########## introduce packet corruption
+
+sudo tc qdisc add dev eth0 root netem corrupt 5%
+
+########## or limit bandwidth
+
+sudo tc qdisc add dev eth0 root tbf rate 1mbit burst 32kbit limit 10000

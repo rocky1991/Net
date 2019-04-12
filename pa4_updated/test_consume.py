@@ -1,6 +1,6 @@
 from confluent_kafka import Producer, Consumer, KafkaError
 settings = {
-    'bootstrap.servers': '54.201.231.207:9092',
+    'bootstrap.servers': '153.90.129.32:9092',
     'group.id': 'mygroup',
     'client.id': 'client-1',
     'enable.auto.commit': True,

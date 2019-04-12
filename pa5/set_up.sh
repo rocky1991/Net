@@ -1,21 +1,5 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install default-jdk
-sudo apt -y install python3-pip
-sudo apt -y install iproute2
-sudo apt -y install iperf3
-mkdir ~/log
-
-sudo apt install librdkafka-dev
-pip3 install confluent-kafka 
-
-echo "Setting up clock sync"
-sudo timedatectl set-ntp no
-sudo apt install ntp
-sudo service ntp restart
-
-
 while [ "$1" != "" ]; do
 	case $1 in 
 		-i | --instance_ip )  	shift 
@@ -27,36 +11,42 @@ while [ "$1" != "" ]; do
 	esac
 	shift
 done
-if [ $type = "kafka" ]; then
-	echo "Sending and extracting kafka zip"
-	scp -i .aws/credential/key1.pem kafka_2.12-2.2.0.tgz $IP:~
-	ssh -i .aws/credential/key1.pem $IP "tar -xzvf kafka_2.12-2.2.0.tgz"
+
+if [ $type = "Initiator" ]; then
+	sudo apt update
+	echo "installing pip3"
+	sudo apt -y install python3-pip
+	echo "installing pymongo"
+	python3 -m pip install pymongo
+
+	echo "installing network measurement tools"
+	sudo apt -y install iproute2
+	sudo apt -y install iperf3
+
+	echo "Setting up clock sync"
+	sudo timedatectl set-ntp no
+	sudo apt install ntp
+	sudo service ntp restart
 fi
 
-if [ $type = "client" ]; then
-	# echo "kafka"
-	echo "Send prood_msg.py and consume_msg.py remote_ips.txt aux_func.py"
-	scp -i .aws/credential/key1.pem prod_msg.py consume_msg.py remote_ips.txt aux_func.py $IP:
+if [ $type = "MongoDB" ]; then
+
+	echo "Sending remote setup script"  
+	scp -i key1.pem mongo_setup.sh $IP:
+	echo "Sending server config modifying script"
+	scp -i key1.pem modify_server_config.py $IP:
+	echo "Running remote set up script"
+	ssh -i key1.pem $IP bash mongo_setup.sh ${IP##*@}
+	
+
 fi
 
+if [ $type = "Responder" ]; then
+	echo "Send pull_msg.py remote_ips.txt aux_func.py"
+	scp -i key1.pem pull_msg.py remote_ips.txt aux_func.py $IP:
+	echo "Sending remote setup script"  
+	scp -i key1.pem responder_setup.sh $IP:
+	echo "Running remote responder set up script"
+	ssh -i key1.pem $IP "bash responder_setup.sh"
+fi
 
-# ssh -i .aws/credential/key1.pem $IP 'mkdir kafka'
-echo "Sending remote setup script"  
-scp -i .aws/credential/key1.pem remote_setup.sh $IP:~
-echo "Running remote set up script"
-ssh -i .aws/credential/key1.pem $IP "bash remote_setup.sh"
-# if [ $IP = "" ]; then
-# 	echo "IP"
-# fi
-
-
-
-
-# echo $IP_PATH
-# while read line
-# do
-	# echo "$line"
-	# scp remote_setup.sh $line":/home/rocky/Documents/git/Net/Kafka"
-	# ssh $line "ls /home/rocky/Documents/git/Net/Kafka/"
-	# ssh $line "bash -s" < /home/rocky/Documents/git/Net/Kafka/remote_setup.sh
-# done < "$IP_PATH"
