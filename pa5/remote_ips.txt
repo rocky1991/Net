@@ -1,1 +1,2 @@
-MongoDB,ubuntu@34.216.174.128
+MongoDB,ubuntu@34.221.139.143
+Initiator,ubuntu@34.209.153.212
