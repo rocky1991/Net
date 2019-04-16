@@ -94,44 +94,16 @@ sudo tc qdisc add dev eth0 root netem corrupt 5%
 sudo tc qdisc add dev eth0 root tbf rate 1mbit burst 32kbit limit 10000
 
 sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
 
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 0.2%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
+./net_setting.sh 15 10m 0.0000000001
+./net_setting.sh 15 10m 0.2
+./net_setting.sh 15 10m 0.4
+./net_setting.sh 15 10m 0.6
+./net_setting.sh 15 10m 0.8
+./net_setting.sh 15 10m 1
+./net_setting.sh 15 10m 1.2
+./net_setting.sh 15 10m 1.4
+./net_setting.sh 15 10m 1.6
+./net_setting.sh 15 10m 1.8
+./net_setting.sh 15 10m 2
 
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 0.4%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 0.6%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 0.8%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 1%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 1.2%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 1.4%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 1.6%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 1.8%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
-
-sudo tc qdisc del dev eth0 root
-sudo tc qdisc add dev eth0 root handle 1: netem delay 15ms loss 2.0%
-sudo tc qdisc add dev eth0 parent 1:1 handle 10: tbf rate 10mbit burst 32kbit limit 10000
