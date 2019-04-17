@@ -99,10 +99,10 @@ def main():
 				append_to_file('q6_initiator.log','loss setting:{}'.format(loss_setting))
 				print("Adjusting network setting")
 				input('Please adjust network setting on each node\nSet latency 15, bandwidth 10m, loss loss_setting+0.0000000001')
-				# for i,instance in enumerate(get_ip()):
-				# 	# if(i>4):
-				# 	# 	break
-				# 	subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m',str(loss_setting+0.00000000001)])
+				for i,instance in enumerate(get_ip()):
+					# if(i>4):
+					# 	break
+					subprocess.run(['./run_net_setting.sh',instance.ip,instance.type,'15','10m',str(loss_setting+0.00000000001)])
 				for msg in msg_list:
 					
 					print("current message id is {} size is {}".format(counter,len(msg)))
