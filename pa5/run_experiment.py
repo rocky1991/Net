@@ -108,7 +108,7 @@ def main():
 					print("current message id is {} size is {}".format(counter,len(msg)))
 					client.pa5.messages1.insert_one({'counter':counter,'value':msg})
 					ts = str(time.time())
-					append_to_file('q5_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
+					append_to_file('q6_initiator.log',"Insert Doc:(counter:{},msg_size={},time: {})".format(counter,len(msg),ts))
 					counter+=1
 			# print("Deleting all documents")
 			# client.pa5.messages1.delete_many({})
