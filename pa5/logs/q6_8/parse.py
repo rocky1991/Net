@@ -18,8 +18,8 @@ with open('q6_responder1.log','U') as file:
 		line=line.replace('Receive message: (counter=','')
 	# while 'Forwarding message: (counter=' in line:
 	# 	line=line.replace('Forwarding message: (counter=','')
-	while 'msg size=' in line:
-		line=line.replace('msg size=','')
+	while 'msg_size=' in line:
+		line=line.replace('msg_size=','')
 	while 'time: ' in line:
 		line=line.replace('time: ','')
 	while ')' in line:
@@ -34,8 +34,8 @@ with open('q6_responder2.log','U') as file:
 		line=line.replace('Receive message: (counter=','')
 	# while 'Forwarding message: (counter=' in line:
 	# 	line=line.replace('Forwarding message: (counter=','')
-	while 'msg size=' in line:
-		line=line.replace('msg size=','')
+	while 'msg_size=' in line:
+		line=line.replace('msg_size=','')
 	while 'time: ' in line:
 		line=line.replace('time: ','')
 	while ')' in line:
@@ -50,8 +50,8 @@ with open('q6_responder3.log','U') as file:
 		line=line.replace('Receive message: (counter=','')
 	# while 'Forwarding message: (counter=' in line:
 	# 	line=line.replace('Forwarding message: (counter=','')
-	while 'msg size=' in line:
-		line=line.replace('msg size=','')
+	while 'msg_size=' in line:
+		line=line.replace('msg_size=','')
 	while 'time: ' in line:
 		line=line.replace('time: ','')
 	while ')' in line:
