@@ -2,11 +2,11 @@ import subprocess
 
 def write_to_file(filename,content):
     with open(filename,'w') as file:
-        file.write(content+'\n')
+        file.write(content)
 
 def append_to_file(filename,content):
     with open(filename,'a') as file:
-        file.write(content+'\n')
+        file.write(content)
 
 class EC2_instance():
 	def __init__(self,type='',ip=''):
