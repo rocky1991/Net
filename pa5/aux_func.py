@@ -19,6 +19,8 @@ def get_ip():
 	with open('./remote_ips.txt','r') as file:
 		lines = file.readlines()
 	for line in lines:
+		if(line=='\n'):
+			continue
 		instance_list.append(EC2_instance(line.split(',')[0].strip(),line.split(',')[1].strip()))
 	return instance_list
 
