@@ -1,8 +1,9 @@
-
+import sys
 import pulsar
 
+topic = sys.argv[1]
 client = pulsar.Client('pulsar://localhost:6650')
-consumer = client.subscribe('my-topic', 'my-subscription')
+consumer = client.subscribe(topic, 'my-subscription')
 
 while True:
     msg = consumer.receive()
